@@ -1,3 +1,8 @@
-#Installation of Dask and Ray
-    Installed Dask library
-    Installed Ray framework
+# High-Throughput Log Analytics & Monitoring Engine
+# Environment Requirements
+dask[complete]
+dask distributed
+ray
+pandas
+numpy
+pytest
