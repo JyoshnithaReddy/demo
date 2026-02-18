@@ -1,0 +1,82 @@
+log_schema:
+  description: "Schema definition for system/application logs"
+
+  required_fields:
+    - log_id
+    - timestamp
+    - level
+    - service
+    - message
+
+  fields:
+    - name: log_id
+      type: string
+      required: true
+      description: "Unique identifier for each log entry"
+
+    - name: timestamp
+      type: string
+      format: datetime
+      required: true
+      description: "Date and time when the log event occurred"
+
+    - name: level
+      type: string
+      allowed_values: [DEBUG, INFO, WARNING, ERROR, CRITICAL]
+      required: true
+      description: "Log severity level"
+
+    - name: service
+      type: string
+      required: true
+      description: "Service or system component that generated the log"
+
+    - name: message
+      type: string
+      required: true
+      description: "Main log message describing the event"
+
+    - name: user_id
+      type: string
+      required: false
+      description: "User identifier if log is related to a user"
+
+    - name: ip_address
+      type: string
+      required: false
+      description: "IP address related to the event"
+
+    - name: request_id
+      type: string
+      required: false
+      description: "Request identifier for tracing logs"
+
+    - name: session_id
+      type: string
+      required: false
+      description: "Session identifier for user session tracking"
+
+    - name: module
+      type: string
+      required: false
+      description: "Module or file name where log is generated"
+
+    - name: status_code
+      type: integer
+      required: false
+      description: "HTTP status code (example: 200, 404, 500)"
+
+    - name: response_time_ms
+      type: integer
+      required: false
+      description: "Response time in milliseconds for performance tracking"
+
+    - name: error_code
+      type: string
+      required: false
+      description: "Error code if the log is an error log"
+
+    - name: metadata
+      type: object
+      required: false
+      description: "Extra information in key-value format"

@@ -1,0 +1,28 @@
+anomaly_schema:
+  goal: "Decide what problems to catch from log monitoring"
+
+  anomalies:
+    - name: "Too many errors happening (Error Spike)"
+      what_is_it: "Sudden increase in ERROR logs within a short period of time."
+      seriousness: "High"
+      detection: "Count ERROR logs per minute. If the count crosses a threshold or is much higher than normal baseline, flag anomaly."
+
+    - name: "Application running too slow"
+      what_is_it: "Response time/latency increases and users experience delays."
+      seriousness: "High"
+      detection: "Monitor average response time. If response time exceeds a threshold (example: >2000ms) for several minutes, flag anomaly."
+
+    - name: "Service stopped responding"
+      what_is_it: "A service crashes or stops sending logs/heartbeat messages."
+      seriousness: "High"
+      detection: "Check heartbeat logs. If no logs received from a service for more than 5 minutes, detect service down anomaly."
+
+    - name: "Too many failed logins"
+      what_is_it: "Large number of login failures indicating brute force or unauthorized access attempts."
+      seriousness: "Medium"
+      detection: "Count failed login attempts per user or IP. If failures exceed a threshold (example: >10 in 2 minutes), flag anomaly."
+
+    - name: "Database running out of connections"
+      what_is_it: "Database cannot accept new connections due to connection pool exhaustion."
+      seriousness: "High"
+      detection: "Monitor DB connection usage and DB error logs. If connection usage exceeds 90% or frequent connection refused errors occur, flag anomaly."
